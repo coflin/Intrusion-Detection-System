@@ -1,0 +1,97 @@
+#! /bin/bash
+figlet -f standard "ShaktiMaan"
+
+#read varname
+#echo Hello $varname
+bashmenu(){
+	echo " "
+	echo What task would you like to operate from the following:-
+	echo " "
+	echo 1 File Permission
+	echo 2.List All Home Users.
+	echo 3.List All Hidden Files.
+	echo 4.Boot Log.
+	echo 5.Directory Size.
+	echo 6.File Size
+	echo 7.File Encrypt.
+	echo 8.File Decrypt.
+	echo 9.Exit
+	echo " "
+	echo  "Choose Your Option"
+	echo " "
+	read option
+	echo " "
+	if [ "$option" == "1" ]
+	then 
+		permissions 
+	fi
+
+	if [ "$option" == "2" ]
+	then
+		ListUsers
+	fi
+
+
+	if [ "$option" == "3" ]
+	then
+		HiddenPython
+	fi
+
+
+	if [ "$option" == "4" ]
+	then
+
+		bootlog
+	fi
+
+
+	if [ "$option" == "5" ]
+	then
+		dirsSize
+
+	fi
+
+	if [ "$option" ==  "6" ]
+	then
+		filesSize
+	fi
+
+	if [ "$option" == "7" ]
+	then
+		menu_encrypt
+	fi
+
+	if [ "$option" == "8" ]
+	then
+		menu_decrypt
+	fi
+
+	if [ "$option" == "9" ]
+	then
+		echo "Exiting"
+		sleep 2s
+		echo "."
+		sleep 1s
+		echo "."
+		sleep 1s
+		exit 0
+
+	elif [ "$option" -gt "9" ]
+	then
+		echo "Invalid Input"
+	
+	fi
+
+
+	}
+bashmenu
+echo ''
+echo "Do you want to continue y/N"
+read cont
+while [ "$cont" == "y" ] || [ "$cont" == "Y" ]
+do
+	bashmenu
+	echo ''
+	echo "Do you want to continue y/N"
+	read cont
+done

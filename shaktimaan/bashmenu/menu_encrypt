@@ -1,0 +1,44 @@
+#!/usr/bin/python
+import os
+import os.path
+from os import path
+print "*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*"
+print "Note that only the sh, py and conf files will be encrypted of the specified path"
+print "*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*"
+def encrypt(filename):
+	f=open(filename,"r")
+	f1=open(filename+".bsv","w")
+	message=[]
+	reversed=[]
+	for char in f.read():
+		message.append(char)
+	i=len(message)-1
+	while i>=0:
+		reversed.append(message[i])
+		i=i-1
+	for revchar in reversed:
+		if(revchar==' '):
+			f1.write(str(chr(145)))
+		else:
+			f1.write(str(chr(ord(revchar)+23))) 
+	os.system("rm "+filename)
+	f.close()
+	f1.close()
+
+def sh(path):
+	for root,dirs,files in os.walk(path,topdown=True):
+              for i in files:
+			if(i[-3:] == ".sh"):
+                               	encrypt(os.path.abspath(os.path.join(root,i)))
+                     	elif(i[-5:] == ".conf"):
+				encrypt(os.path.abspath(os.path.join(root,i)))
+			elif(i[-3:] == ".py"):
+				encrypt(os.path.abspath(os.path.join(root,i)))
+path=raw_input("Enter the path name : ")
+if(os.path.exists(path)):
+	sh(path)
+	print "All files in "+path+" has been encrypted"
+else:
+	print "File doesn't exists"
+
+

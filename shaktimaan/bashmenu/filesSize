@@ -1,0 +1,17 @@
+#!/usr/bin/python
+import os
+root_name = raw_input("enter the directories name with full path = ")
+print ("------------------------------------------------")
+def filesName(root_name):
+    for root, dirs, files in os.walk(root_name,topdown=True):
+        for i in files:
+        	print i
+		files_path = os.path.abspath(os.path.join(root,i))
+		files_size = os.path.getsize(files_path)
+		print files_path
+		print files_size
+		print ("------------------------------------------------")    
+if(os.path.exists(root_name)):
+    filesName(root_name)
+else:
+    print("Invalid Path")

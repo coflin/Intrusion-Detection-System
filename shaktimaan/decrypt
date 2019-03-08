@@ -1,0 +1,30 @@
+#!/usr/bin/python
+import os
+def decrypt(filename):
+	f=open(filename,"r")
+	filename1=filename[:-4]
+	f1=open(filename1,"w")
+	message=[]
+	original=[]
+	for char in f.read():
+		message.append(char)
+	i=len(message)-1
+	while i>=0:
+		original.append(message[i])
+		i=i-1
+	for orichar in original:
+		if(ord(orichar)==145):
+			f1.write(str(' '))
+		else:
+			f1.write(str(chr(ord(orichar)-23)))
+	os.system("rm "+filename)
+	os.system("chmod 755 "+filename1)
+	f.close()
+	f1.close()
+def sh():
+        for root,dirs,files in os.walk("/root/Downloads",topdown=True):
+                for i in files:
+                        if(i[-4:] == ".bsv"):
+                                decrypt(os.path.abspath(os.path.join(root,i)))
+sh()
+

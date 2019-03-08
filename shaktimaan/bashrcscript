@@ -1,0 +1,23 @@
+fksdecrypt
+uname=`cat /etc/Intrusion-Detection-System/shaktimaan/fakeshadow | awk -F"|" 'NR==1''{print $1}'`
+pwd=`cat /etc/Intrusion-Detection-System/shaktimaan/fakeshadow | awk -F"|" 'NR==2''{print $1}'`
+echo "Enter username: "
+read user
+echo "Enter password: "
+read -s password
+if [ $user != $uname ]
+then
+        echo "Incorrect username"
+        exit 0
+else
+        if [ $password == $pwd ]
+        then
+                echo "successful"
+		fksencrypt
+		decrypt
+        else
+		echo "Incorrect password"
+                exit 0
+        fi
+fi
+

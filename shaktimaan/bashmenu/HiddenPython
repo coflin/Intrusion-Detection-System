@@ -1,0 +1,21 @@
+#!/usr/bin/python
+import os
+#Code for searching the hidden files in the given directory 
+path=raw_input("Enter the path : ")
+print("---------------------------------------------")
+def hiddenFile(path):
+	for root,dirs,files in os.walk(path,topdown=False): #looping through the directory '.' means current working directory 
+		for dirname in dirs:
+			if(dirname[0]=="."):	#if the directory name starts with .
+				print (os.path.abspath(os.path.join(root)))
+				print(dirname) #print the directory name
+				print("------------------------------------------")
+		for filename in files:  #looping through the files in the directory
+			if(filename[0]=="."):  #if the file starts with '.'
+				print (os.path.abspath(os.path.join(root)))
+				print(filename)  #print file name
+				print("------------------------------------------")
+if(os.path.exists(path)):
+	hiddenFile(path)
+else:
+	print "Wrong path"
