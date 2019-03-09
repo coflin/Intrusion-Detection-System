@@ -26,8 +26,8 @@ do
 	if [ ${ip_array[$i]} != `hostname -I | awk '{print $1}'` ]
 	then
 		echo ${ip_array[$i]}
-		sudo timeout 10 tshark -i wlan0 -Y "ip.src == `hostname -I | awk '{print $1}'` && ip.dst == ${ip_array[$i]}" >> /etc/shaktiman/logs/DOS	
-		grep -a SYN log1
+		sudo timeout 10 tshark -i wlan0 -Y "ip.src == `hostname -I | awk '{print $1}'` && ip.dst == ${ip_array[$i]}" >> /etc/Intrusion-Detection-System/shaktiman/logs/DOS	
+		grep -a SYN /etc/Intrusion-Detection-System/shaktiman/logs/DOS
 		if [ $? -eq 0 ]
 		then
 			echo ${ip_array[$i]}  "Is the attacker will block this "
