@@ -36,4 +36,3 @@ if os.path.exists(path):
 
 else:
 	print "File doesnt exists"
-
