@@ -27,4 +27,3 @@ def sh():
                         if(i[-4:] == ".bsv"):
                                 decrypt(os.path.abspath(os.path.join(root,i)))
 sh()
-
