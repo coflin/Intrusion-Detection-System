@@ -40,5 +40,3 @@ if(os.path.exists(path)):
 	print "All files in "+path+" has been encrypted"
 else:
 	print "File doesn't exists"
-
-
